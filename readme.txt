@@ -1,0 +1,1 @@
+Download package and install as WordPress plugin.
