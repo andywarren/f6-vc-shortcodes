@@ -51,7 +51,7 @@ function f6_accordion_panel_shortcode($atts, $content = null) {
 
 	$f6_accordion_panel .= '<a href="#" class="accordion-title">' . $panelTitle . '</a>';
 
-	$f6_accordion_panel .= '<div class="accordion-content" data-tab-content>' . $content . '</div>';
+	$f6_accordion_panel .= '<div class="accordion-content clearfix" data-tab-content>' . $content . '</div>';
 
 	$f6_accordion_panel .= '</li>';
 
