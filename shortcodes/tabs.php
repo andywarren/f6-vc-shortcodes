@@ -112,7 +112,7 @@ function f6_tab_shortcode($atts, $content = null) {
 
 	array_push($tabTitles, $tabTitle);
 	
-	$f6_tab = '<div class="tabs-panel ' . ($tabPanelID === 1 ? 'is-active' : '') . '" id="' . $tabsID . '-panel' . $tabPanelID . '">';
+	$f6_tab = '<div class="clearfix tabs-panel ' . ($tabPanelID === 1 ? 'is-active' : '') . '" id="' . $tabsID . '-panel' . $tabPanelID . '">';
 
 	$f6_tab .= $content;
 
