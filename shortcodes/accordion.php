@@ -8,13 +8,17 @@ function f6_accordion_shortcode($atts, $content = null) {
 	
 	$a = shortcode_atts(array(
 		'accordion-class' => '',
+		'all-closed' => 'false'
 	), $atts, 'f6_accordion');
 
 	// set variable from the sectionCustomClass shortcode attribute
 	$accordionClass = $a['accordion-class'];
 
+	// boolean set by all-closed shortcode attribute - allows all accordion panels to be closed at the same time
+	$allClosed = filter_var($a['all-closed'], FILTER_VALIDATE_BOOLEAN);
+
 	// build the Foundation 6 accordion wrapper
-	$f6_accordion = '<ul class="accordion' . ($accordionClass != '' ? ' ' . $accordionClass : '') . '" data-accordion data-multi-expand="true">';
+	$f6_accordion = '<ul class="accordion' . ($accordionClass != '' ? ' ' . $accordionClass : '') . '" data-accordion data-multi-expand="true"' . ($allClosed ? ' data-allow-all-closed="true"' : '') . '>';
 
 	$f6_accordion .= do_shortcode($content);
 
@@ -90,6 +94,19 @@ function f6_accordion_shortcode_vc() {
 					'value' => '',
 					'description' => __('Enter a custom CSS Class name here if you would like to. This is applied to the accordion container.', 'f6-vc-shortcodes'),
 				),
+				array(
+            		'type' => 'dropdown',
+            		'holder' => '',
+            		'class' => '',
+            		'heading' => __('Allow All Panels To Be Closed', 'f6-vc-shortcodes'),
+            		'param_name' => 'all-closed',        
+            		'value' => array(
+            			__('False', 'f6-vc-shortcodes') => 'false',
+            			__('True', 'f6-vc-shortcodes') => 'true',
+  					),
+  					'std' => 'false',
+  					'description' => __('Choose True to allow all accordion panels to be closed at the same time. False will require one panel to always be open.', 'f6-vc-shortcodes'),
+  				),	
 			),
 		));
 
