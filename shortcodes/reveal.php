@@ -42,7 +42,7 @@ function f6_reveal_shortcode($atts, $content = null) {
 	$customClass = $a['custom-class'];
 
 	// build the f6 reveal shortcode
-	$f6_reveal = '<div class="reveal ' . $size . ' ' . $customClass . '" id="' . $id . '" data-reveal data-overlay="' . $overlay . '" data-animation-in="' . $in . '" data-animation-out="' . $out . '">';
+	$f6_reveal = '<div class="f6-reveal reveal ' . $size . ' ' . $customClass . '" id="' . $id . '" data-reveal data-overlay="' . $overlay . '" data-animation-in="' . $in . '" data-animation-out="' . $out . '">';
 
 	$f6_reveal .= $content;
 
