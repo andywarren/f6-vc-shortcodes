@@ -52,7 +52,7 @@ function f6_reveal_shortcode($atts, $content = null) {
 
 	if ($openButton) {
 
-		$f6_reveal .= '<button class="button" data-open="' . $id . '">' . $buttonText . '</button>';
+		$f6_reveal .= '<button class="button da-button da-secondary-button  da-medium-button" data-open="' . $id . '">' . $buttonText . '</button>';
 
 	}
 
