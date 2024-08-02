@@ -14,7 +14,8 @@ function f6_reveal_shortcode($atts, $content = null) {
 		'out' => 'none',
 		'open-button' => 'false',
 		'button-text' => 'Click me for a modal',
-		'custom-class' => '',
+		'custom-modal-class' => '',
+		'custom-button-class' => ''
 	), $atts, 'f6_reveal');
 
 	// set variable from the id shortcode attribute
@@ -39,10 +40,13 @@ function f6_reveal_shortcode($atts, $content = null) {
 	$out = $a['out'];
 
 	// set variable from the custom-class shortcode attribute
-	$customClass = $a['custom-class'];
+	$customModalClass = $a['custom-modal-class'];
+
+	// set variable from the custom-class shortcode attribute
+	$customButtonClass = $a['custom-button-class'];
 
 	// build the f6 reveal shortcode
-	$f6_reveal = '<div class="f6-reveal reveal ' . $size . ' ' . $customClass . '" id="' . $id . '" data-reveal data-overlay="' . $overlay . '" data-animation-in="' . $in . '" data-animation-out="' . $out . '">';
+	$f6_reveal = '<div class="f6-reveal reveal ' . $size . ' ' . $customModalClass . '" id="' . $id . '" data-reveal data-overlay="' . $overlay . '" data-animation-in="' . $in . '" data-animation-out="' . $out . '">';
 
 	$f6_reveal .= $content;
 
@@ -52,7 +56,7 @@ function f6_reveal_shortcode($atts, $content = null) {
 
 	if ($openButton) {
 
-		$f6_reveal .= '<button class="button" data-open="' . $id . '">' . $buttonText . '</button>';
+		$f6_reveal .= '<button class="button ' . $customButtonClass . '" data-open="' . $id . '">' . $buttonText . '</button>';
 
 	}
 
@@ -207,10 +211,23 @@ function f6_reveal_shortcode_vc() {
 					'type' => 'textfield',
 					'holder' => '',
 					'class' => '',
-					'heading' => __('Custom CSS Class', 'f6-vc-shortcodes'),
-					'param_name' => 'custom-class',        
+					'heading' => __('Custom Modal CSS Class', 'f6-vc-shortcodes'),
+					'param_name' => 'custom-modal-class',        
 					'value' => '',
 					'description' => __('Enter a custom CSS Class name here if you would like to. This is applied to the modal container.', 'f6-vc-shortcodes'),
+				),
+				array(
+					'type' => 'textfield',
+					'holder' => '',
+					'class' => '',
+					'heading' => __('Custom Button CSS Class', 'f6-vc-shortcodes'),
+					'param_name' => 'custom-button-class',        
+					'value' => '',
+					'description' => __('Enter a custom CSS Class name here if you would like to. This is applied to the button that opens the modal.', 'f6-vc-shortcodes'),
+					'dependency' => array(
+                  		'element' => 'open-button',
+                  		'value' => 'true',
+                	),
 				),
 			),
 		));
